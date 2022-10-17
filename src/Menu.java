@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Menu {
-    HashMap<Integer,Course> courseSet;
+    HashMap<Integer,Course> courseSet = new HashMap<>();
 
     public Menu(HashMap<Integer,Course> courses){
         this.courseSet = courses;
@@ -12,22 +12,22 @@ public class Menu {
     //主界面
     int MainMenu(){
         clear();
-        System.out.println("/t 0.退出");
-        System.out.println("/t 1.管理员");
-        System.out.println("/t 2.教师");
-        System.out.println("/t 3.学生");
-        System.out.println("请选择编号");
+        System.out.println("\t 0.退出");
+        System.out.println("\t 1.管理员");
+        System.out.println("\t 2.教师");
+        System.out.println("\t 3.学生");
+        System.out.println("\t 请选择编号");
         return readInt("[0-3]");
     }
 
     //管理员主菜单
     int UserMainMenu(){
         clear();
-        System.out.println("/t 0.退出");
-        System.out.println("/t 1.显示课程清单");
-        System.out.println("/t 2.显示学生列表");
-        System.out.println("/t 3.显示教师列表");
-        System.out.println("/t 请输入功能号");
+        System.out.println("\t 0.退出");
+        System.out.println("\t 1.显示课程清单");
+        System.out.println("\t 2.显示学生列表");
+        System.out.println("\t 3.显示教师列表");
+        System.out.println("\t 请输入功能号");
         return readInt("[0-3]");
     }
 
@@ -35,12 +35,12 @@ public class Menu {
     int UserCourseMenu(Vector<Course> courses){
         clear();
         for (Course course : courses) course.Show();                //输出所有课程信息
-        System.out.println("/t 0.退出");
-        System.out.println("/t 1.按照课程编号排序");
-        System.out.println("/t 2.按照选课人数排序");
-        System.out.println("/t 3.添加课程");
-        System.out.println("/t 4.删除课程");
-        System.out.println("/t 请输入功能号");
+        System.out.println("\t 0.退出");
+        System.out.println("\t 1.按照课程编号排序");
+        System.out.println("\t 2.按照选课人数排序");
+        System.out.println("\t 3.添加课程");
+        System.out.println("\t 4.删除课程");
+        System.out.println("\t 请输入功能号");
         return readInt("[0-4]");
     }
 
@@ -48,11 +48,11 @@ public class Menu {
     int UserStudentMenu(Vector<Student> students){
         clear();
         for(Student student : students) student.Show();             //输出所有学生信息
-        System.out.println("/t 0.退出");
-        System.out.println("/t 1.添加学生");
-        System.out.println("/t 2.删除学生");
-        System.out.println("/t 3.重置学生密码");
-        System.out.println("/t 请输入功能号");
+        System.out.println("\t 0.退出");
+        System.out.println("\t 1.添加学生");
+        System.out.println("\t 2.删除学生");
+        System.out.println("\t 3.重置学生密码");
+        System.out.println("\t 请输入功能号");
         return readInt("[0-3]");
     }
 
@@ -60,12 +60,12 @@ public class Menu {
     int UserTeacherMenu(Vector<Teacher> teachers){
         clear();
         for (Teacher teacher : teachers) teacher.Show();            //输出所有教师信息
-        System.out.println("/t 0.退出");
-        System.out.println("/t 1.添加教师");
-        System.out.println("/t 2.删除教师");
-        System.out.println("/t 3.重置教师密码");
-        System.out.println("/t 4.更改教师职位");
-        System.out.println("/t 请输入功能号");
+        System.out.println("\t 0.退出");
+        System.out.println("\t 1.添加教师");
+        System.out.println("\t 2.删除教师");
+        System.out.println("\t 3.重置教师密码");
+        System.out.println("\t 4.更改教师职位");
+        System.out.println("\t 请输入功能号");
         return readInt("[0-4]");
     }
 
@@ -75,33 +75,13 @@ public class Menu {
         if(S.getClass() == Student.class)
         System.out.println("欢迎登录"+"  "+S.name+ " "+ ((Student)S).studentID);
         System.out.println();
-        System.out.println("/t 0.退出");
-        System.out.println("/t 1.查看所选课程");
-        System.out.println("/t 2.选修课选课");
-        System.out.println("/t 3.修改登录密码");
-        System.out.println("/t 请输入功能号");
-        return readInt("[0-3]");
+        System.out.println("\t 0.退出");
+        System.out.println("\t 1.查看所选课程");
+        System.out.println("\t 2.修改登录密码");
+        System.out.println("\t 请输入功能号");
+        return readInt("[0-2]");
     }
-    //学生选课菜单
-    void StudentCourseSelectMenu(Vector<Course> courses,Student student){
-        //未选课程
-        System.out.println("\t 未选课程");
-        for (Course course : courses){
-            if(course.getClass() == Elective.class) {
-                Elective elective = (Elective) course;
-                if(elective.studentSet.contains(student.studentID))
-                    elective.show();
-            }
-        }
-        //已选课程
-        System.out.println("\t 已选课程");
-        for(int courseID : student.courseIDSet){
-            if(courses.get(courseID).getClass() == Elective.class) {
-                ((Elective) courses.get(courseID)).show();
-            }
-        }
-        System.out.println("\t 请输课程编号选课");
-    }
+
 
     //教师主菜单
     int TeacherMainMenu(User T){
@@ -109,10 +89,10 @@ public class Menu {
         if (T.getClass() == Teacher.class)
             System.out.println("欢迎登录"+"  "+T.name+ " "+ ((Teacher)T).workId);
         System.out.println();
-        System.out.println("/t 0.退出");
-        System.out.println("/t 1.查看任课课程");
-        System.out.println("/t 2.修改登录密码");
-        System.out.println("/t 请输入功能号");
+        System.out.println("\t 0.退出");
+        System.out.println("\t 1.查看任课课程");
+        System.out.println("\t 2.修改登录密码");
+        System.out.println("\t 请输入功能号");
         return readInt("[0-2]");
     }
 

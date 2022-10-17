@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class User {
     String name; //用户名
-    String pass;//密码
+    String pass = "12345";//密码
     public User (String name,String pass) {//给属性进行初始化的构造方法
         this.name = name;
         this.pass = pass;

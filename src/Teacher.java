@@ -18,7 +18,7 @@ enum EnumPosition{
 public class Teacher extends User {
     int workId;                     //工号
     EnumPosition position;          //职位:
-    Vector<Integer> courseIDSet;    //教授的课程
+    Vector<Integer> courseIDSet = new Vector<>();    //教授的课程
     public Teacher (String name ,int id, EnumPosition position){
         this.name   = name;
 

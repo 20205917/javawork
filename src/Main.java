@@ -1,12 +1,14 @@
-import javax.swing.text.Position;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Vector;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-
+    public static void main(String[] args){
+        ManagementSystem MS = new ManagementSystem();
+        try {
+            MS.Load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        MS.run();
     }
 }
 //黄雄苓 10 讲师
